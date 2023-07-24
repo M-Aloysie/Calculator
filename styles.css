@@ -89,7 +89,7 @@ output#result {
     font-size: 1.325rem;
     padding: 1rem 0;
     font-weight: 700;
-    background: darkgoldenrod;
+    background: rgb(96, 70, 4);
     border: 0px solid transparent;
     outline: none;
     text-decoration: none;
