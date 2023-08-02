@@ -94,21 +94,26 @@ calcKeys.addEventListener('click', (event) => {
 
 	//Send equation for calculation after Equals To (=) is pressed
 	if (type === 'equal') {
-    	// Perform a calculation
-	    isEqualsPressed = true;
-	    const finalResult = handleEquation(equation);
-	    
-	    if (finalResult || finalResult === 0) {
-	    	displayResult.textContent = (!Number.isInteger(finalResult)) ? finalResult.toFixed(2) : 
-	    								(finalResult.toString().length >= 16) ? finalResult.toExponential(2) : finalResult ;
-	    } else {
-	    	displayResult.textContent = 'Math Error';
-	    }
-	    
-  }
+        // Perform a calculation
+        isEqualsPressed = true;
+        const finalResult = handleEquation(equation);
+        
+        if (finalResult || finalResult === 0) {
+            displayResult.textContent = (!Number.isInteger(finalResult)) ? finalResult.toFixed(2) : 
+                                        (finalResult.toString().length >= 16) ? finalResult.toExponential(2) : finalResult ;
+        } else {
+            displayResult.textContent = 'Math Error';
+        }
+        
+        // Update the equation and checkForDecimal for continued calculation
+        equation = finalResult.toString();
+        checkForDecimal = finalResult.toString();
+    }
 
-	calculator.dataset.previousKeyType = type;
+    calculator.dataset.previousKeyType = type;
 })
+
+
 
 //Function to calculate result based on each operator
 function calculate(firstNumber, operator, secondNumber) {
